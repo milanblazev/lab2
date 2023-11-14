@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"/>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title>Add a movie</title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Add movie</h1>
+</header>
+<main>
+
+    <form th:action="@{/movies/saveMovie}" th:method="POST">
+        <div>
+            <h2>Movie details:</h2>
+
+            Movie title: <input name="movieNewTitle"><br><br>
+            Summary: <textarea name="movieNewSummary"></textarea><br><br>
+            Rating <input name="movieNewRating"><br><br>
+            <br>
+            <br>
+            <label>
+                Select a production:
+                <select name="selectedNewProduction">
+                    <option th:each="value:${productionList}">
+                        <th:block th:text="${value.getName()}"></th:block>
+                    </option>
+                </select>
+            </label>
+            <input type="submit" value="Add new Movie">
+        </div>
+    </form>
+
+
+
+
+</main>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</html>
